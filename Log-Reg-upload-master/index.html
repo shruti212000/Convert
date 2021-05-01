@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login system with nodejs and mysql database</title>
+    <link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+    <section class="box">
+        
+        <div class="form">
+            <h2>User Login</h2>
+            <form action="/" method="POST">
+                <input type="username" name="username" class="input-text" placeholder="Username" required/>
+                <div class="passBox">
+                    <input type="password" name="password" class="input-text" id="pwd"
+                     placeholder="Password" required/>
+                     <span class="passText"></span>
+                </div>
+                
+                <input type="submit" class="btn" value="LOGIN">
+            </form>
+            <a href="register">REGISTER</a>
+        </div>
+    </section>
+
+    <script>
+        const password = document.getElementById("pwd");
+        password.addEventListener("keyup", () => {
+            const passBox = document.querySelector('.passBox');
+            const passText = document.querySelector('.passText');
+            const passPattern = /(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}/;
+
+            if (password.value.match(passPattern)) {
+                passBox.classList.add('valid');
+                passBox.classList.remove('invalid');
+                passText.innerHTML = "Your Password in Valid";
+            } else {
+                passBox.classList.add('invalid');
+                passBox.classList.remove('valid');
+                passText.innerHTML = "Your password must be at least 6 characters as well as contain at least one uppercase, one lowercase, and one number.";
+            }
+        });
+    </script>
+
+</body>
+</html>
